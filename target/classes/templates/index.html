@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Home - Video Game Store</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="jumbotron bg-primary text-white p-5 rounded mb-4">
+        <h1 class="display-4"><i class="fas fa-gamepad"></i> Welcome to GameStore</h1>
+        <p class="lead">Your ultimate destination for video games across all platforms!</p>
+        <hr class="my-4">
+        <p>Discover, browse, and manage your favorite games with our comprehensive catalog.</p>
+        <a class="btn btn-light btn-lg" href="/games" role="button">Browse Games</a>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-dice-d20 fa-2x text-primary mb-2"></i>
+                    <h5 class="card-title" th:text="${totalGames}">0</h5>
+                    <p class="card-text">Total Games</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-box fa-2x text-success mb-2"></i>
+                    <h5 class="card-title" th:text="${availableGames}">0</h5>
+                    <p class="card-text">In Stock</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-star fa-2x text-warning mb-2"></i>
+                    <h5 class="card-title" th:text="${featuredGames != null ? featuredGames.size() : 0}">0</h5>
+                    <p class="card-text">Featured Games</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-fire fa-2x text-danger mb-2"></i>
+                    <h5 class="card-title" th:text="${newReleases != null ? newReleases.size() : 0}">0</h5>
+                    <p class="card-text">New Releases</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Listings -->
+    <div class="row">
+        <div class="col-md-6">
+            <h3><i class="fas fa-star text-warning"></i> Featured Games</h3>
+            <div th:if="${featuredGames != null and !featuredGames.empty}">
+                <div th:each="game : ${featuredGames}" class="card mb-2">
+                    <div class="card-body">
+                        <h6 class="card-title" th:text="${game.title}">Game Title</h6>
+                        <span class="badge bg-primary" th:text="${game.genre}">Genre</span>
+                        <span class="badge bg-secondary" th:text="${game.platform}">Platform</span>
+                        <span class="price float-end" th:text="'$' + ${game.price}">$0.00</span>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${featuredGames == null or featuredGames.empty}" class="text-muted">
+                No featured games available.
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3><i class="fas fa-fire text-danger"></i> New Releases</h3>
+            <div th:if="${newReleases != null and !newReleases.empty}">
+                <div th:each="game : ${#lists.size(newReleases) > 5 ? newReleases.subList(0, 5) : newReleases}" class="card mb-2">
+                    <div class="card-body">
+                        <h6 class="card-title" th:text="${game.title}">Game Title</h6>
+                        <span class="badge bg-info" th:text="${game.platform}">Platform</span>
+                        <small class="text-muted" th:text="${#temporals.format(game.releaseDate, 'MMM dd, yyyy')}">Release Date</small>
+                        <span class="price float-end" th:text="'$' + ${game.price}">$0.00</span>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${newReleases == null or newReleases.empty}" class="text-muted">
+                No new releases available.
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+videogamestore\controller\GameController.class
+videogamestore\controller\GameRestController.class
+videogamestore\exception\GlobalExceptionHandler.class
+videogamestore\entity\Game.class
+videogamestore\repository\GameRepository.class
+videogamestore\config\DataInitializer.class
+videogamestore\service\GameService.class
+VideoGameStoreApplication.class
+videogamestore\controller\HomeController.class
