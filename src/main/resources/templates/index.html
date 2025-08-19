@@ -20,8 +20,9 @@
             <div class="card text-center">
                 <div class="card-body">
                     <i class="fas fa-dice-d20 fa-2x text-primary mb-2"></i>
-                    <h5 class="card-title" th:text="${totalGames}">0</h5>
-                    <p class="card-text">Total Games</p>
+                    <p class="card-text mb-0">
+                        Total Games: <span class="fw-bold" th:text="${totalGames}">0</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -29,8 +30,9 @@
             <div class="card text-center">
                 <div class="card-body">
                     <i class="fas fa-box fa-2x text-success mb-2"></i>
-                    <h5 class="card-title" th:text="${availableGames}">0</h5>
-                    <p class="card-text">In Stock</p>
+                    <p class="card-text mb-0">
+                        In Stock: <span class="fw-bold" th:text="${availableGames}">0</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -38,8 +40,9 @@
             <div class="card text-center">
                 <div class="card-body">
                     <i class="fas fa-star fa-2x text-warning mb-2"></i>
-                    <h5 class="card-title" th:text="${featuredGames != null ? featuredGames.size() : 0}">0</h5>
-                    <p class="card-text">Featured Games</p>
+                    <p class="card-text mb-0">
+                        Featured Games: <span class="fw-bold" th:text="${featuredGames != null ? featuredGames.size() : 0}">0</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -47,8 +50,9 @@
             <div class="card text-center">
                 <div class="card-body">
                     <i class="fas fa-fire fa-2x text-danger mb-2"></i>
-                    <h5 class="card-title" th:text="${newReleases != null ? newReleases.size() : 0}">0</h5>
-                    <p class="card-text">New Releases</p>
+                    <p class="card-text mb-0">
+                        New Releases: <span class="fw-bold" th:text="${newReleases != null ? newReleases.size() : 0}">0</span>
+                    </p>
                 </div>
             </div>
         </div>
